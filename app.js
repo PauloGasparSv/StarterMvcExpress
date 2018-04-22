@@ -13,7 +13,7 @@ app.use(express.json());
 routes(app);
 
 //Server
-app.listen(80, () => 
+app.listen(8000, () => 
 {
     console.log('Server started');
 });

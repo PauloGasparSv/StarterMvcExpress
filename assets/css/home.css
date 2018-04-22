@@ -1,7 +1,14 @@
+:root{
+    --primary: #222;
+    --secondary: #333;
+    --tertiary: #666;
+}
+
 html, body{
     padding: 0;
     margin: 0;
     font-family: 'Roboto','Arial', sans-serif;
+    
 }
 
 .content{
@@ -15,6 +22,14 @@ html, body{
 
 .content > header h1{
     font-size: 42px;
+    color: var(--primary);
+}
+
+.content > header p{
+    margin: auto;
+    margin-bottom: 24px;
+    max-width: 70%;
+    color: var(--secondary);
 }
 
 .content > section {
@@ -25,7 +40,7 @@ html, body{
 
 .content > section button{
     background: rgb(220, 220, 220);
-    color: black;
+    color: var(--primary);
     cursor: pointer;
     font-weight: bold;
     font-size: 22px;
@@ -36,5 +51,5 @@ html, body{
 
 .content > section button:hover{
     background: rgb(200, 200, 200);
-    color: red;
+    color: black;
 }
