@@ -4,6 +4,7 @@ const app = express();
 
 //Settings
 app.set('view engine', 'ejs');
+app.use(express.static('assets'));
 
 //MiddleWare
 app.use(express.json());
