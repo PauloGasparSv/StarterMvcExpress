@@ -1,0 +1,40 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto','Arial', sans-serif;
+}
+
+.content{
+    padding: 12px 10%;
+}
+
+.content > header{
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.content > header h1{
+    font-size: 42px;
+}
+
+.content > section {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.content > section button{
+    background: rgb(220, 220, 220);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+}
+
+.content > section button:hover{
+    background: rgb(200, 200, 200);
+    color: red;
+}
