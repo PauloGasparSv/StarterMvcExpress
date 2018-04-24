@@ -1,6 +1,9 @@
+//Express setup
 const express = require('express');
-const routes = require('./utils/routes');
 const app = express();
+
+//My lib
+const routes = require('./utils/routes');
 
 //Settings
 app.set('view engine', 'ejs');

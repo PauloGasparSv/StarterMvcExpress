@@ -1,3 +1,5 @@
+
+//Simplest routing i could figure
 const home = require('../controllers/homecontroller');
 
 module.exports = (app) => 

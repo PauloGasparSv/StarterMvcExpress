@@ -1,7 +1,19 @@
+//Simple controller with http page request and simple JSON GET and POST returning methods
+const connection = require('../utils/connection');
+
 module.exports = (app) => 
 {
     app.get('/', (req, res) =>
     {
+        connection.query('SHOW DATABASES')
+        .then((response) => 
+        {
+            console.log('Response: ' + JSON.stringify(response));
+        })
+        .catch((error) =>
+        {
+            console.log('Error: ' + error);
+        });
         res.render('home');
     });
 
