@@ -1,22 +1,22 @@
-const request = new XMLHttpRequest();
-const get = (url) =>
+const Request = new XMLHttpRequest();
+const Get = (url) =>
 {
     return new Promise( (resolve, reject) =>
     {
         try
         {
-            request.open('GET', url);
-            request.onload = () => 
+            Request.open('GET', url);
+            Request.onload = () => 
             {
-                if(request.status == 200)
+                if(Request.status == 200)
                 {
-                    resolve(JSON.parse(request.responseText));
+                    resolve(JSON.parse(Request.responseText));
                     return;
                 }
                 reject('Status Error');
             };
-            request.onerror = () => reject(request.statusText);
-            request.send();
+            Request.onerror = () => reject(Request.statusText);
+            Request.send();
         }
         catch(e)
         {
@@ -25,25 +25,25 @@ const get = (url) =>
     });
 }
 
-const post = (url, data) => 
+const Post = (url, data) => 
 {
     return new Promise( (resolve, reject) => 
     {
         try
         {
-            request.open('POST', url);
-            request.setRequestHeader('Content-Type', 'application/json');
-            request.onload = () => 
+            Request.open('POST', url);
+            Request.setRequestHeader('Content-Type', 'application/json');
+            Request.onload = () => 
             {
-                if(request.status == 200)
+                if(Request.status == 200)
                 {
-                    resolve(JSON.parse(request.responseText));
+                    resolve(JSON.parse(Request.responseText));
                     return;
                 }
                 reject('Status Error');
             };
-            request.onerror = () => reject(request.statusText);
-            request.send(JSON.stringify(data));
+            Request.onerror = () => reject(Request.statusText);
+            Request.send(JSON.stringify(data));
         }
         catch(e)
         {

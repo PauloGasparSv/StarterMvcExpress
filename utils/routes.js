@@ -1,8 +1,8 @@
-
 //Simplest routing i could figure
-const home = require('../controllers/homecontroller');
+const Example = require('../controllers/example_controller');
 
-module.exports = (app) => 
+module.exports = (App) => 
 {
-   home(app);
+    //Add the controllers here
+    Example(App);
 }

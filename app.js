@@ -1,22 +1,22 @@
 //Express setup
-const express = require('express');
-const app = express();
+const Express = require('express');
+const App = Express();
 
 //My lib
-const routes = require('./utils/routes');
+const Routes = require('./utils/routes');
 
 //Settings
-app.set('view engine', 'ejs');
-app.use(express.static('assets'));
+App.set('view engine', 'ejs');
+App.use(Express.static('assets'));
 
 //MiddleWare
-app.use(express.json());
+App.use(Express.json());
 
 //Routing
-routes(app);
+Routes(App);
 
 //Server
-app.listen(8000, () => 
+App.listen(8000, () => 
 {
     console.log('Server started');
 });

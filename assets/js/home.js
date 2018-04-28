@@ -3,26 +3,15 @@ window.onload = () =>
 {
     document.querySelector('button').addEventListener('click',() => 
     {
-        let data = {
-            a: 'a',
-            b: 1
-        };
-
-        post('/backend/simplePost', data)
+        Post('/backend/simplePost', {a: 'a', b: 1})
         .then((response) => 
         {
             if(response.status == true)
             {
-                console.log('okay ' + response.message);
+                let newNode = document.createElement('p');
+                newNode.innerHTML = 'This came from the server: <b>' + response.message + '</b>';
+                document.querySelector('#serverResponse').appendChild(newNode);
             }
-            else
-            {
-                console.log('Watafak ' + response.status);
-            }
-        })
-        .catch((error) => 
-        {
-            console.log(error);
-        });
+        }).catch((error) => {});
     });
 }

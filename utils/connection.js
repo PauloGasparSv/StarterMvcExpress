@@ -1,7 +1,7 @@
-const mysql = require('mysql');
-const sqlite3 = require('sqlite3').verbose();
-
-let mysqlConnection = mysql.createConnection({
+const Mysql = require('Mysql');
+const DefaultResponse = require('./default_response');
+const Pool = Mysql.createPool({
+    connectionLimit : 10,
     host: 'localhost',
     user: 'user',
     password: 'password'
@@ -9,34 +9,37 @@ let mysqlConnection = mysql.createConnection({
 
 module.exports = 
 {
-    query: (query) => 
+    query: (query, args) => 
     {
-        let promise = new Promise((resolve, reject) => 
+        return new Promise((resolve, reject) => 
         {
             if(!query)
             {
-                reject({status:false, message: ''});
+                reject(DefaultResponse());
                 return;
             }
-            mysqlConnection.connect((conError) => 
+            Pool.getConnection((conError, connection) => 
             {
                 if(conError)
                 {
-                    reject({status:false, message: 'Could not connect to database'});
+                    console.log(conError);
+                    reject(DefaultResponse(false,'Could not connect to database'));
                     return;
                 }
-                
-                mysqlConnection.query(query, (queryError, queryResponse) => 
+                connection.query(query, args, (queryError, queryResponse) => 
                 {
                     if(queryError || !queryResponse)
                     {
-                        reject({status: false, message:'Query error'});
+                        console.log(queryError);
+                        reject(DefaultResponse(false,'Query error'));
+                        connection.release();
                         return;
                     }
-                    resolve({status: true, response: queryResponse});
+                    
+                    connection.release();
+                    resolve(DefaultResponse(true, 'success', queryResponse));
                 });
             });
         });
-        return promise;
     }
 }
